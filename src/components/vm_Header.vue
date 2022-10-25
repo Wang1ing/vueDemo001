@@ -287,14 +287,14 @@ export default {
   background-color: rgba(0, 191, 255, 0.5);
 }
 
-/*.the_head_menu {*/
-/*  height: 24px;*/
-/*  width: 24px;*/
-/*}*/
+.the_head_menu {
+  height: 24px;
+  width: 24px;
+}
 
-/*.the_head_menu:hover {*/
-/*  box-shadow: 0 0 5px 3px rgba(0, 191, 255, 1);*/
-/*}*/
+.the_head_menu:hover {
+  box-shadow: 0 0 5px 3px rgba(0, 191, 255, 1);
+}
 
 .the_profile_photo {
   z-index: 9999999;
