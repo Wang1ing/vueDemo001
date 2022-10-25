@@ -3,17 +3,17 @@
     <div class="the_header_div">
       <img src="../assets/logo.png" class="the_web_logo" alt="zwsj">
       <ul class="header_ul">
-        <li v-for="(item , index) in linkList" :key="index" class="menus"
-            @mouseover="theinvert(index)"
-            @mouseout="item.subshow=!item.subshow">
-          <img src="../assets/guide_top.png" class="show_info_btn" alt="暂无数据">
+        <li v-for="(item , index) in linkList" :key="index" class="menus" id="menus"
+            @mouseenter="theinvert(index , item)"
+            @mouseleave="theinvert(index , item)">
+          <img src="../assets/guide_top.png" class="show_info_btn" id="show_info_btn" alt="暂无数据">
           <a :href="item.href" target="_blank" style="line-height: 50px">{{ item.the_name }}</a>
-          <ul v-show="item.subshow" class="menus_feature">
+          <ul v-show="item.subshow" class="menus_feature" id="menus_feature">
             <li v-for="(subMenus , i1ndex ) in item.submenu" :key="i1ndex" class="subMenus">
               <a href="#" class="name_title">{{ subMenus.name_title }}</a>
               <ul>
                 <li v-for="(feaTures , i2ndex) in subMenus.title_feature" :key="i2ndex" class="feaTures">
-                  <img :src="feaTures.img_url" style="width: 24px;height: 24px">
+                  <img :src="feaTures.img_url" style="width: 24px;height: 24px" alt="zwsj">
                   <a href="#">{{ feaTures.feature }}</a>
                   <span style="margin-top: 5px">{{ feaTures.feature_info }}</span>
                 </li>
@@ -31,6 +31,7 @@
 </template>
 
 <script>
+
 export default {
   /*
   * 网站
@@ -180,18 +181,34 @@ export default {
         submenu: [{
           name_title: '',
           url: '',
-          title_feature: [{feature: '生态介绍', feature_info: ''},
-            {feature: '超音速计划', feature_info: ''},
-            {feature: '声选计划', feature_info: ''},
-            {feature: '共鸣计划', feature_info: ''}]
+          title_feature: [{feature: '生态介绍', feature_info: '', img_url: require('../assets/1.png')},
+            {feature: '超音速计划', feature_info: '', img_url: require('../assets/1.png')},
+            {feature: '声选计划', feature_info: '', img_url: require('../assets/1.png')},
+            {feature: '共鸣计划', feature_info: '', img_url: require('../assets/1.png')}]
         }]
       }]
     }
   },
   methods: {
-    theinvert (index) {
-      console.log('invert')
-      document.getElementsByClassName('show_info_btn')[index].style.transform = 'rotate(180deg)'
+    theinvert (index, item) {
+      console.log('触发函数了')
+      item.subshow = !item.subshow
+      if (item.subshow === true) {
+        document.getElementsByClassName('show_info_btn')[index].style.transform = 'rotate(180deg)'
+      } else {
+        document.getElementsByClassName('show_info_btn')[index].style.transform = 'rotate(0deg)'
+      }
+      // var oDiv = document.getElementsByClassName('menus')[index]
+      // oDiv.onmouseover = function () {
+      //   item.subshow = !item.subshow
+      //   console.log('悬浮触发翻转')
+      //   document.getElementsByClassName('show_info_btn')[index].style.transform = 'rotate(90deg)'
+      // }
+      // oDiv.onmouseout = function () {
+      //   item.subshow = !item.subshow
+      //   console.log('离开翻转原位')
+      //   document.getElementsByClassName('show_info_btn')[index].style.transform = 'rotate(90deg)'
+      // }
     },
     changeTopcolor () {
       if (document.documentElement.scrollTop !== 0) {
@@ -199,10 +216,10 @@ export default {
       } else {
         document.getElementById('header').setAttribute('style', 'background-color:rgba(255,255,255,0)')
       }
-    },
-    menus () {
-      console.log(document.getElementsByClassName('menus_feature')[1].style.width)
     }
+    // menus () {
+    //   console.log(document.getElementsByClassName('menus_feature')[1].style.width)
+    // }
   },
   mounted () {
     this.changeTopcolor()
@@ -238,22 +255,23 @@ export default {
 }
 
 .show_info_btn {
+  transition: transform .5s;
   height: 12px;
   width: 12px;
 }
 
-.login_btn {
-  z-index: 9999999;
-  display: block;
-  float: right;
-  font-size: 18px;
-  border-color: rgba(0, 0, 0, 0.1);
-  border-radius: 10px;
-  background-color: deepskyblue;
-  height: 30px;
-  width: 84px;
-  margin-right: 5%;
-}
+/*.login_btn {*/
+/*  z-index: 9999999;*/
+/*  display: block;*/
+/*  float: right;*/
+/*  font-size: 18px;*/
+/*  border-color: rgba(0, 0, 0, 0.1);*/
+/*  border-radius: 10px;*/
+/*  background-color: deepskyblue;*/
+/*  height: 30px;*/
+/*  width: 84px;*/
+/*  margin-right: 5%;*/
+/*}*/
 
 #login_btn {
   letter-spacing: 5px;
@@ -287,14 +305,14 @@ export default {
   background-color: rgba(0, 191, 255, 0.5);
 }
 
-.the_head_menu {
-  height: 24px;
-  width: 24px;
-}
+/*.the_head_menu {*/
+/*  height: 24px;*/
+/*  width: 24px;*/
+/*}*/
 
-.the_head_menu:hover {
-  box-shadow: 0 0 5px 3px rgba(0, 191, 255, 1);
-}
+/*.the_head_menu:hover {*/
+/*  box-shadow: 0 0 5px 3px rgba(0, 191, 255, 1);*/
+/*}*/
 
 .the_profile_photo {
   z-index: 9999999;

@@ -9,6 +9,7 @@
     <!--    <vmshowForte/>-->
     <vmshowFortes/>
     <vmshowourService/>
+    <vmshowGoodnessAndGif/>
     <vmFooter/>
     <vmTotop/>
   </div>
@@ -25,6 +26,7 @@ import vmshowFortes from '../components/vm_showFortes'
 import vmshowourService from '../components/vm_show_ourService'
 import vmFooter from '../components/vm_footer'
 import vmshowUsers from '../components/vm_showUsers'
+import vmshowGoodnessAndGif from '../components/vm_showGoodnessAndGif'
 
 export default {
   name: 'Main',
@@ -38,7 +40,8 @@ export default {
     vmshowFortes,
     vmshowourService,
     vmFooter,
-    vmshowUsers
+    vmshowUsers,
+    vmshowGoodnessAndGif
   }
 }
 </script>

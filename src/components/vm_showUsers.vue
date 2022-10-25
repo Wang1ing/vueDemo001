@@ -33,6 +33,7 @@ export default {
 
 <style scoped>
 .show_users_div {
+  margin: 0 auto;
   align-content: center;
   justify-content: center;
   padding-bottom: 40px;
@@ -55,6 +56,7 @@ export default {
   height: 140px;
 }
 .right_wrapper{
+  margin-left: 50px;
   display: flex;
   width: 25%;
   height: 140px;
