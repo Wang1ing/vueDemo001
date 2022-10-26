@@ -272,7 +272,10 @@ export default {
 /*  width: 84px;*/
 /*  margin-right: 5%;*/
 /*}*/
-
+a:active,
+a:hover{
+  text-decoration: none;
+}
 #login_btn {
   letter-spacing: 5px;
   width: 84px;
