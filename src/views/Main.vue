@@ -8,8 +8,8 @@
     <vmshowUsers/>
     <!--    <vmshowForte/>-->
     <vmshowFortes/>
-    <vmshowourService/>
     <vmshowGoodnessAndGif/>
+    <vmshowourService/>
     <vmFooter/>
     <vmTotop/>
   </div>
