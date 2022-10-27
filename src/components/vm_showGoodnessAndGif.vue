@@ -5,25 +5,21 @@
       <div class="all_goodness_info">丰富的API组合，简单的API调用，轻松创建实时互动场景</div>
     </div>
     <div class="the_goodness_div">
-      <div class="the_main_div" v-for="(item , index) in png_gif_list" :key="index">
-        <img v-if="item.show_gif_status" :src="item.png_url" alt="zwsj"
-             @mouseover="item.show_gif_status = !item.show_gif_status"
-             @mouseout="item.show_gif_status = !item.show_gif_status">
-        <img v-else :src="item.gif_url" alt="zwsj"
-             @mouseover="item.show_gif_status = !item.show_gif_status"
-             @mouseout="item.show_gif_status = !item.show_gif_status">
-        <div>
+      <div class="the_main_div" v-for="(item , index) in png_gif_list" :key="index"
+           @mouseover="change(item,index)"
+           @mouseout="change(item,index)">
+        <img class="the_png_or_gif" v-if="item.show_gif_status" :src="item.png_url" alt="zwsj">
+        <img class="the_png_or_gif" v-else :src="item.gif_url" alt="zwsj">
+        <div class="the_goodeness_title">
           {{ item.the_goodness_title }}
         </div>
         <div class="bottom_line">
         </div>
-        <div>
+        <div class="the_goodness_info">
           {{item.the_goodness_inof}}
         </div>
-        <div>
+        <div class="the_bottom">
           查看详情
-        </div>
-        <div class="the_bottom_wave">
         </div>
       </div>
     </div>
@@ -108,7 +104,20 @@ export default {
       ]
     }
   },
-  methods: {}
+  methods: {
+    change (item, index) {
+      if (item.show_gif_status === true) {
+        document.getElementsByClassName('the_png_or_gif')[index].style.margin = '10px auto'
+        document.getElementsByClassName('the_bottom')[index].style.opacity = 1
+        document.getElementsByClassName('the_goodness_info')[index].style.opacity = 1
+      } else {
+        document.getElementsByClassName('the_png_or_gif')[index].style.margin = '40px auto 10px'
+        document.getElementsByClassName('the_bottom')[index].style.opacity = 0
+        document.getElementsByClassName('the_goodness_info')[index].style.opacity = 0
+      }
+      item.show_gif_status = !item.show_gif_status
+    }
+  }
 }
 </script>
 
@@ -144,10 +153,11 @@ export default {
   grid-template-columns: 1fr 1fr 1fr 1fr 1fr;
   grid-template-rows: 1fr 1fr;
   grid-row-gap: 34px;
-  grid-column-gap: 25px;
+  grid-column-gap: 20px;
 }
 
 .the_main_div {
+  display: block;
   height: 240px;
   background: #fff;
   box-shadow: -1px 4px 16px -3px rgb(26 134 192 / 16%);
@@ -155,21 +165,59 @@ export default {
 }
 
 img {
-  width: 100px;
-  height: 100px;
-  border: black solid 5px;
+  display: block;
+  margin: 50px auto 20px;
+  width: 60px;
+  height: 60px;
+  transition: margin .5s ease;
 }
 
 .bottom_line {
-  width: 50%;
-  border-bottom: yellow solid 3px;
+  width: 25px;
+  height: 1.66667px;
+  background: #e2e2e2;
+  margin: 12.5px auto 0;
+}
+.the_goodeness_title{
+  padding-left: 10px;
+  padding-right: 10px;
+  text-align: center;
+  font-size: 20px;
 }
 
-.the_bottom_wave{
-  height: 8px;
-  width: 90px;
+.the_goodness_info{
+  text-align: justify;
+  padding-left: 15px;
+  padding-right: 15px;
+  margin-top: 10px;
+  font-size: 11.66667px;
+  font-weight: 400;
+  color: #5c5f61;
+  line-height: 18.33333px;
+  opacity: 0;
+  transition: opacity 0.5s ease;
+}
+
+.the_bottom{
+  margin: 20px auto 0;
+  text-align: center;
+  font-size: 10px;
+  font-weight: 500;
+  color: #099dfd;
+  line-height: 14.16667px;
+  opacity: 0;
+  transition: opacity .5s ease;
+  /*position: relative;*/
+}
+.the_bottom:after{
+  display: block;
+  content: '';
   background-image: url("../assets/wave.gif");
   background-size: 100%;
   background-repeat: no-repeat;
+  margin: auto;
+  width: 100%;
+  max-width: 50px;
+  height: 8px;
 }
 </style>

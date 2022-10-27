@@ -7,7 +7,7 @@
     <vmAccessPlatform/>
     <vmshowUsers/>
     <!--    <vmshowForte/>-->
-    <vmshowFortes/>
+<!--    <vmshowFortes/>-->
     <vmshowGoodnessAndGif/>
     <vmshowourService/>
     <vmFooter/>
